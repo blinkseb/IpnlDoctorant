@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+    <head>
+        <title>{% block title %}Site des doctorants de l'IPNL{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="author" content="Sébastien Brochet" />
+        <meta name="title" content="{{ block('title') }}" />
+        <meta name="description" content="" />
+        <meta name="language" content="fr" />
+        <meta name="robots" content="index, follow" />
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link rel="shortcut icon" href="/favicon.ico" />
+        {% block stylesheets %}
+          <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+          {% stylesheets filter="?yui_css" output="css/frontend.css"
+            '@MadalynnMainBundle/Resources/public/css/common.css'
+          %}
+            <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+          {% endstylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        {% endblock %}
+    </head>
+
+   <body>
+
+    <div class="topbar">
+      <div class="fill">
+        <div class="container-fluid">
+          <a class="brand" href="#">Les doctorants de l'IPNL</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+
+          <ul class="nav secondary-nav pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Dropdown</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Secondary link</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Another link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form action="" class="pull-right">
+          <input class="span2" type="text" placeholder="Nom d'utilisateur">
+          <input class="span2" type="password" placeholder="Mot de passe">
+          <input class="btn primary" type="submit" value="Sign In" />
+        </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="content">
+        <div class="page-header">
+          <h1>Page name <small>Supporting text or tagline</small></h1>
+        </div>
+        <div class="row">
+          <div class="span16">
+            {% for user in users | user_sort(6) %}
+              {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="sidebar">
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Company 2011</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
+
+</html>

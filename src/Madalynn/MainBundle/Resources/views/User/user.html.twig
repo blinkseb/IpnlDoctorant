@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="span7">
+    <div class="well span7">
+      <div class="row">
+        <div class="span4">
+          <strong>{{ user.firstname }} {{ user.lastname }}</strong>
+        </div>
+        <div class="span3 doctorant-groupe">
+          Groupe : {{ user.group }}
+        </div>
+      </div>
+      <div class="doctorant-these">
+        {{ user.thesis }}
+      </div>
+      <div>
+        {{ user.getFormatedLevel | raw }}, bureau {{ user.office }}
+      </div>
+      <div>
+        Né le {{ user.birthdate | date('d/m/Y')}}
+      </div>
+      <div>
+        Début de thèse : {{ user.beginningyear | date('m/Y') }}, {{ user.getFormatedThesisYear | raw }}
+      </div>
+      <div>
+        Fin de thèse : {{ user.soutenance | date('Y') }}
+      </div>
+      <div>
+        Status : {{ user.status }}
+      </div>
+    </div>
+  </div>
+</div>
