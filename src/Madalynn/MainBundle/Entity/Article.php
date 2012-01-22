@@ -10,76 +10,78 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="doct_article")
  * @ORM\HasLifecycleCallbacks
  */
-class Article {
+class Article
+{
 
-  /**
-   * @ORM\Id
-   * @ORM\Column(type="integer")
-   * @ORM\GeneratedValue(strategy="AUTO")
-   */
-  private $id;
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
 
-  /**
-   * @ORM\Column(type="boolean")
-   */
-  private $visible;
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $visible;
 
-  /**
-   * @ORM\Column(length=255)
-   *
-   * @Assert\NotBlank
-   */
-  private $author;
+    /**
+     * @ORM\Column(length=255)
+     *
+     * @Assert\NotBlank
+     */
+    private $author;
 
-  /**
-   * @ORM\Column(length=255)
-   *
-   * @Assert\NotBlank
-   */
-  private $title;
+    /**
+     * @ORM\Column(length=255)
+     *
+     * @Assert\NotBlank
+     */
+    private $title;
 
-  /**
-   * @ORM\Column(type="text")
-   *
-   * @Assert\NotBlank
-   */
-  private $content;
+    /**
+     * @ORM\Column(type="text")
+     *
+     * @Assert\NotBlank
+     */
+    private $content;
 
-  /**
-   * @ORM\Column(type="string")
-   */
-  private $slug;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $slug;
 
-  /**
-   * @ORM\Column(type="datetime")
-   */
-  private $created;
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created;
 
-  /**
-   * @ORM\Column(type="datetime")
-   */
-  private $updated;
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updated;
 
-  /**
-   * @ORM\PrePersist
-   */
-  public function created() {
-    $this->created = new \DateTime();
-    $this->updated = new \DateTime();
-  }
+    /**
+     * @ORM\PrePersist
+     */
+    public function created()
+    {
+        $this->created = new \DateTime();
+        $this->updated = new \DateTime();
+    }
 
-  /**
-   * @ORM\PreUpdate
-   */
-  public function updated() {
-    $this->updated = new \DateTime();
-  }
-
+    /**
+     * @ORM\PreUpdate
+     */
+    public function updated()
+    {
+        $this->updated = new \DateTime();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -101,7 +103,7 @@ class Article {
     /**
      * Get visible
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getVisible()
     {
@@ -123,7 +125,7 @@ class Article {
     /**
      * Get author
      *
-     * @return string 
+     * @return string
      */
     public function getAuthor()
     {
@@ -145,7 +147,7 @@ class Article {
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -167,7 +169,7 @@ class Article {
     /**
      * Get content
      *
-     * @return text 
+     * @return text
      */
     public function getContent()
     {
@@ -189,7 +191,7 @@ class Article {
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {
@@ -211,7 +213,7 @@ class Article {
     /**
      * Get created
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getCreated()
     {
@@ -233,10 +235,11 @@ class Article {
     /**
      * Get updated
      *
-     * @return datetime 
+     * @return datetime
      */
     public function getUpdated()
     {
         return $this->updated;
     }
+
 }

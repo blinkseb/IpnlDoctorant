@@ -25,7 +25,13 @@
         {% endblock %}
 
         {% block javascripts %}
-          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+          {% javascripts filter="?yui_css" output="js/js.js"
+            '@MadalynnMainBundle/Resources/public/js/bootstrap-twipsy.js'
+            '@MadalynnMainBundle/Resources/public/js/bootstrap-popover.js'
+          %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+          {% endjavascripts %}
         {% endblock %}
     </head>
 
@@ -33,7 +39,7 @@
 
     <div class="topbar">
       <div class="fill">
-        <div class="container-fluid">
+        <div class="container">
           <a class="brand" href="#">Les doctorants de l'IPNL</a>
           <ul class="nav">
             <li class="active"><a href="#">Home</a></li>
@@ -61,27 +67,40 @@
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container">
+      <div class="sidebar">
+
+
+      </div>
       <div class="content">
         <div class="page-header">
           <h1>Page name <small>Supporting text or tagline</small></h1>
         </div>
         <div class="row">
           <div class="span16">
-            {% for user in users | user_sort(6) %}
+            {% for user in users | user_sort(1, 'group') %}
               {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
             {% endfor %}
           </div>
         </div>
       </div>
-      <div class="sidebar">
-
-
-      </div>
 
       <footer>
         <p>&copy; Company 2011</p>
       </footer>
+
+      <script>
+            $(function () {
+              $("div[rel=popover]")
+                .popover({
+                  offset: 10,
+                  html: true
+                })
+                .click(function(e) {
+                  e.preventDefault()
+                })
+            })
+        </script>
 
     </div> <!-- /container -->
 

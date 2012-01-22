@@ -15,117 +15,121 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\Table(name="doct_user")
  */
-class User extends BaseUser {
+class User extends BaseUser
+{
 
-  /**
-   * @ORM\Id
-   * @ORM\Column(type="integer")
-   * @ORM\GeneratedValue(strategy="AUTO")
-   */
-  protected $id;
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
 
-  /**
-   * @ORM\Column(length=255)
-   *
-   * @Assert\NotBlank
-   */
-  private $firstname;
+    /**
+     * @ORM\Column(length=255)
+     *
+     * @Assert\NotBlank
+     */
+    private $firstname;
 
-  /**
-   * @ORM\Column(length=255)
-   *
-   * @Assert\NotBlank
-   */
-  private $lastname;
+    /**
+     * @ORM\Column(length=255)
+     *
+     * @Assert\NotBlank
+     */
+    private $lastname;
 
-  /**
-   * @ORM\Column(type = "date")
-   * @Assert\Date
-   */
-  private $birthdate;
+    /**
+     * @ORM\Column(type = "date")
+     * @Assert\Date
+     */
+    private $birthdate;
 
-  /**
-   * @ORM\Column(length=100, name = "groupe")
-   *
-   * @Assert\NotBlank
-   */
-  private $group;
+    /**
+     * @ORM\Column(length=100, name = "groupe")
+     *
+     * @Assert\NotBlank
+     */
+    private $group;
 
-  /**
-   * @ORM\Column(type="smallint")
-   * @Assert\Min(limit = -1, message = "L'étage doit être >= à -1")
-   * @Assert\Max(limit = 5, message = "L'étage doit être <= à 5")
-   */
-  private $level;
+    /**
+     * @ORM\Column(type="smallint")
+     * @Assert\Min(limit = -1, message = "L'étage doit être >= à -1")
+     * @Assert\Max(limit = 5, message = "L'étage doit être <= à 5")
+     */
+    private $level;
 
-  /**
-   * @ORM\Column(length=15)
-   *
-   * @Assert\NotBlank
-   */
-  private $phone;
+    /**
+     * @ORM\Column(length=15)
+     *
+     * @Assert\NotBlank
+     */
+    private $phone;
 
-  /**
-   * @ORM\Column(type="integer")
-   *
-   * @Assert\NotBlank
-   */
-  private $office;
+    /**
+     * @ORM\Column(type="integer")
+     *
+     * @Assert\NotBlank
+     */
+    private $office;
 
-  /**
-   * @ORM\Column(length=100)
-   *
-   * @Assert\NotBlank
-   */
-  private $thesis;
+    /**
+     * @ORM\Column(length=100)
+     *
+     * @Assert\NotBlank
+     */
+    private $thesis;
 
-  /**
-   * @ORM\Column(type = "date")
-   * @Assert\Date
-   */
-  private $beginningyear;
+    /**
+     * @ORM\Column(type = "date")
+     * @Assert\Date
+     */
+    private $beginningyear;
 
-  /**
-   * @ORM\Column(type = "date")
-   * @Assert\Date
-   */
-  private $soutenance;
+    /**
+     * @ORM\Column(type = "date")
+     * @Assert\Date
+     */
+    private $soutenance;
 
-  /**
-   * @ORM\Column()
-   * @Assert\Choice(choices = {"DOCTORANT", "EX-DOCTORANT", "OTHER"})
-   */
-  private $status;
+    /**
+     * @ORM\Column()
+     * @Assert\Choice(choices = {"DOCTORANT", "EX-DOCTORANT", "OTHER"})
+     */
+    private $status;
 
-  public function __construct() {
-    parent::__construct();
-  }
-
-  public function getFormatedLevel() {
-    switch ($this->level) {
-      case 0:
-        return "Rez-de-chaussée";
-      case 1:
-        return "1<sup>er</sup> étage";
-      default:
-        return $this->level . "<sup>ème</sup> étage";
+    public function __construct()
+    {
+        parent::__construct();
     }
-  }
 
-  public function getThesisYear() {
-    $now = new \DateTime();
-    return $this->beginningyear->diff(new \DateTime())->y + 1;
-  }
-
-  public function getFormatedThesisYear() {
-    $year = $this->getThesisYear();
-    switch ($year) {
-      default:
-        return $year . "<sup>ème</sup> année";
-      case 1:
-        return "1<sup>ère</sup> année";
+    public function getFormatedLevel()
+    {
+        switch ($this->level) {
+            case 0:
+                return 'Rez-de-chaussée';
+            case 1:
+                return '1<sup>er</sup> étage';
+            default:
+                return $this->level . '<sup>ème</sup> étage';
+        }
     }
-  }
+
+    public function getThesisYear()
+    {
+        return $this->beginningyear->diff(new \DateTime())->y + 1;
+    }
+
+    public function getFormatedThesisYear()
+    {
+        $year = $this->getThesisYear();
+        switch ($year) {
+            default:
+                return $year . '<sup>ème</sup> année';
+            case 1:
+                return '1<sup>ère</sup> année';
+        }
+    }
 
     /**
      * Get id
@@ -378,4 +382,5 @@ class User extends BaseUser {
     {
         return $this->office;
     }
+
 }
