@@ -43,7 +43,7 @@ class User extends BaseUser
      * @ORM\Column(type = "date")
      * @Assert\Date
      */
-    private $birthdate;
+    private $birthday;
 
     /**
      * @ORM\Column(length=100, name = "groupe")
@@ -183,28 +183,6 @@ class User extends BaseUser
     public function getLastname()
     {
         return $this->lastname;
-    }
-
-    /**
-     * Set birthdate
-     *
-     * @param date $birthdate
-     * @return User
-     */
-    public function setBirthdate($birthdate)
-    {
-        $this->birthdate = $birthdate;
-        return $this;
-    }
-
-    /**
-     * Get birthdate
-     *
-     * @return date
-     */
-    public function getBirthdate()
-    {
-        return $this->birthdate;
     }
 
     /**
@@ -383,4 +361,26 @@ class User extends BaseUser
         return $this->office;
     }
 
+
+    /**
+     * Set birthday
+     *
+     * @param date $birthday
+     * @return User
+     */
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+        return $this;
+    }
+
+    /**
+     * Get birthday
+     *
+     * @return date
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
 }

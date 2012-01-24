@@ -26,9 +26,8 @@ class Article
     private $visible;
 
     /**
-     * @ORM\Column(length=255)
-     *
-     * @Assert\NotBlank
+     * @ORM\ManyToOne(targetEntity="Madalynn\MainBundle\Entity\User")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $author;
 

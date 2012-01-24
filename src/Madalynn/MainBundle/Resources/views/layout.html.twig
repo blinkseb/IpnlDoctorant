@@ -77,10 +77,10 @@
           <h1>Page name <small>Supporting text or tagline</small></h1>
         </div>
         <div class="row">
-          <div class="span16">
-            {% for user in users | user_sort(1, 'group') %}
-              {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
-            {% endfor %}
+          <div class="span14">
+              {% for article in articles %}
+                  {% include 'MadalynnMainBundle:Article:article.html.twig' with { 'article': article } %}
+              {% endfor %}
           </div>
         </div>
       </div>

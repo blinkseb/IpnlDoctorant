@@ -17,7 +17,10 @@ class MainController extends Controller {
 
     $users = $repo->findAll();
 
-    return $this->render('MadalynnMainBundle:Main:index.html.twig', array('users' => $users));
+    $repo = $em->getRepository('MadalynnMainBundle:Article');
+    $articles = $repo->findAll();
+
+    return $this->render('MadalynnMainBundle:Main:index.html.twig', array('articles' => $articles));
   }
 
 }

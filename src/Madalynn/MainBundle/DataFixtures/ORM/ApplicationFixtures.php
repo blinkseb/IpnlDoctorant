@@ -31,7 +31,7 @@ class ApplicationFixtures implements FixtureInterface, ContainerAwareInterface {
       $user->setLevel($faker->randomElement(array(-1, 0, 1, 2, 3, 4, 5)));
       $user->setPhone($faker->phoneNumber);
       $user->setStatus($faker->randomElement(array("DOCTORANT", "EX-DOCTORANT")));
-      $user->setBirthdate($faker->dateTimeThisCentury);
+      $user->setBirthday($faker->dateTimeThisCentury);
       $user->setBeginningyear($faker->dateTimeThisDecade);
       $user->setSoutenance($faker->dateTimeBetween('now', '+10 years'));
       $user->setPlainPassword($faker->lexify("??????"));
@@ -39,6 +39,15 @@ class ApplicationFixtures implements FixtureInterface, ContainerAwareInterface {
       $user->setOffice($faker->randomNumber(3));
 
       $userManager->updateUser($user);
+
+      $article = new Madalynn\MainBundle\Entity\Article();
+      $article->setAuthor($user);
+      $article->setContent($faker->paragraph(3));
+      $article->setTitle($faker->sentence);
+      $article->setSlug($faker->word);
+      $article->setVisible(true);
+
+      $manager->persist($article);
     }
 
     $manager->flush();
