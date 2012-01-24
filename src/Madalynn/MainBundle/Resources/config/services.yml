@@ -4,6 +4,6 @@ services:
     public: false
     arguments: ["@fos_user.user_manager"]
   twig.extension.twigext:
-    class: Madalynn\MainBundle\Twig\Extension\UserSortExtension
+    class: Madalynn\MainBundle\Twig\Extension\MyExtensions
     tags:
       - { name: twig.extension }

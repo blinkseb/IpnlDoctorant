@@ -47,6 +47,7 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
 
+          {% if app.user %}
           <ul class="nav secondary-nav pull-right">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle">Dropdown</a>
@@ -58,11 +59,9 @@
               </ul>
             </li>
           </ul>
-          <form action="" class="pull-right">
-          <input class="span2" type="text" placeholder="Nom d'utilisateur">
-          <input class="span2" type="password" placeholder="Mot de passe">
-          <input class="btn primary" type="submit" value="Sign In" />
-        </form>
+          {% else %}
+            {% render "FOSUserBundle:Security:login" %}
+          {% endif %}
         </div>
       </div>
     </div>

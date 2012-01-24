@@ -1,0 +1,26 @@
+{% if error %}
+<form action="{{ path("fos_user_security_check") }}" method="post" class="pull-right" data-placement="below" rel="error-popup" title="Erreur" data-content="{{ error }}">
+{% else %}
+<form action="{{ path("fos_user_security_check") }}" method="post" class="pull-right">
+{% endif %}
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    <input class="span2" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="E-mail" />
+    <input class="span2" type="password" id="password" name="_password" placeholder="Mot de passe" />
+    <input class="btn primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+</form>
+{% if error %}
+    <script>
+        $(function () {
+            $("form[rel=error-popup]")
+            .popover({
+                offset: 10,
+                trigger: 'manual'
+            })
+            .popover('show');
+
+            window.setTimeout(function() {
+                $("form[rel=error-popup]").popover('hide')
+            }, 4000);
+        })
+    </script>
+{% endif %}
