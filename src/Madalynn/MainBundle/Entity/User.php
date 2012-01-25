@@ -60,6 +60,13 @@ class User extends BaseUser
     private $level;
 
     /**
+     * @ORM\Column(length=20)
+     *
+     * @Assert\NotBlank
+     */
+    private $building;
+
+    /**
      * @ORM\Column(length=15)
      *
      * @Assert\NotBlank
@@ -117,7 +124,9 @@ class User extends BaseUser
 
     public function getThesisYear()
     {
-        return $this->beginningyear->diff(new \DateTime())->y + 1;
+        $now = new \DateTime();
+        $now->setDate((int) date('Y'), 10, 1); // 1st october of the current year
+        return $this->beginningyear->diff($now)->y + 1;
     }
 
     public function getFormatedThesisYear()
@@ -382,5 +391,27 @@ class User extends BaseUser
     public function getBirthday()
     {
         return $this->birthday;
+    }
+
+    /**
+     * Set building
+     *
+     * @param string $building
+     * @return User
+     */
+    public function setBuilding($building)
+    {
+        $this->building = $building;
+        return $this;
+    }
+
+    /**
+     * Get building
+     *
+     * @return string
+     */
+    public function getBuilding()
+    {
+        return $this->building;
     }
 }

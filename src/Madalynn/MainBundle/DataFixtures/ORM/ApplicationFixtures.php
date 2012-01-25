@@ -37,6 +37,7 @@ class ApplicationFixtures implements FixtureInterface, ContainerAwareInterface {
       $user->setPlainPassword($faker->lexify("??????"));
       $user->setThesis($faker->sentence(10));
       $user->setOffice($faker->randomNumber(3));
+      $user->setBuilding("Dirac");
 
       $userManager->updateUser($user);
 
@@ -66,6 +67,7 @@ class ApplicationFixtures implements FixtureInterface, ContainerAwareInterface {
     $user->setPlainPassword('btnk62');
     $user->setThesis('Blabla avec CMS');
     $user->setOffice(116);
+    $user->setBuilding("Dirac");
     $user->setEnabled(true);
     $user->setSuperAdmin(true);
 

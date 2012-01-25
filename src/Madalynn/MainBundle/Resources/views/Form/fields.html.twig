@@ -1,0 +1,34 @@
+{% block field_row %}
+{% spaceless %}
+{% set isCheckbox = 'checkbox' in form.get('types') %}
+{% set isValid = 0 == form.get('errors')|length %}
+    <div class="clearfix {%- if not isValid %} error{% endif %}">
+        {% if not isCheckbox %}
+            {{ form_label(form, label|default(null)) }}
+        {% endif %}
+        <div class="input">
+            {{ form_widget(form) }}
+            {{ form_errors(form) }}
+            {% if isCheckbox %}
+                {{ block('emi_checkbox') }}
+            {% endif %}
+        </div>
+    </div>
+{% endspaceless %}
+{% endblock field_row %}
+
+{% block emi_checkbox %}
+{% spaceless %}
+    <span> {{ label }}</span>
+{% endspaceless %}
+{% endblock %}
+
+{% block field_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+        {% for error in errors %}
+            <span class="help-inline">{{ error.messageTemplate|trans(error.messageParameters, 'validators') }}</span>
+        {% endfor %}
+    {% endif %}
+{% endspaceless %}
+{% endblock field_errors %}

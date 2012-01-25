@@ -77,6 +77,11 @@
         <div class="page-header">
             {% block pageheader %}{% endblock %}
         </div>
+        {% for key, message in app.session.getFlashes() %}
+        <div class="{{ key }}">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+        {% endfor %}
         <div class="row">
           <div class="span14">
               {% block content %}{% endblock %}

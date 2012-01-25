@@ -40,10 +40,16 @@ class ProfileFormType extends BaseType
             ->add('lastname')
             ->add('thesis')
             ->add('group')
+            ->add('building')
             ->add('level')
             ->add('office')
-            ->add('phone')
-        ;
+            ->add('phone');
+        $now = new \DateTime();
+        $now = (int) $now->format('Y');
+        $builder
+            ->add('birthday', 'date', array(
+                'years' => range($now - 100, $now)
+            ));
     }
 }
 
