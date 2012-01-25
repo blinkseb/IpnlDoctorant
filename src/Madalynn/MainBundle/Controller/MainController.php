@@ -13,10 +13,6 @@ class MainController extends Controller {
 
   public function homepageAction() {
     $em = $this->getDoctrine()->getEntityManager();
-    $repo = $em->getRepository('MadalynnMainBundle:User');
-
-    $users = $repo->findAll();
-
     $repo = $em->getRepository('MadalynnMainBundle:Article');
     $articles = $repo->findAll();
 

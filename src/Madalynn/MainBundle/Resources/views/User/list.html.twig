@@ -1,0 +1,46 @@
+{% extends "MadalynnMainBundle::layout.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts filter="?yui_css" output="js/tabs.js"
+        '@MadalynnMainBundle/Resources/public/js/bootstrap-tabs.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block pageheader %}
+    <h1>Liste des doctorants</h1>
+{% endblock %}
+
+{% block content %}
+    <ul class="tabs" data-tabs="tabs">
+        <li class="active"><a href="#premiereannee">1<sup>ère</sup> année</a></li>
+        <li><a href="#deuxiemeannee">2<sup>ème</sup> année</a></li>
+        <li><a href="#troisiemeannee">3<sup>ème</sup> année</a></li>
+        <li><a href="#anciendoctorants">Anciens doctorants</a></li>
+    </ul>
+
+    <div class="pill-content">
+        <div class="active" id="premiereannee">
+            {% for user in users | user_sort(1) %}
+                {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
+            {% endfor %}
+        </div>
+        <div id="deuxiemeannee">
+            {% for user in users | user_sort(2) %}
+                {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
+            {% endfor %}
+        </div>
+        <div id="troisiemeannee">
+            {% for user in users | user_sort(3) %}
+                {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
+            {% endfor %}
+        </div>
+        <div id="anciendoctorants">
+            {% for user in users | user_sort(4) %}
+                {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

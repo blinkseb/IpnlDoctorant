@@ -2,6 +2,10 @@ homepage:
     pattern: /
     defaults: { _controller: MadalynnMainBundle:Main:homepage }
 
+user_list:
+    pattern: /user/list
+    defaults: { _controller: MadalynnMainBundle:User:list }
+
 fos_user_security_check:
     pattern: /login_check
     defaults: { _controller: FOSUserBundle:Security:check }

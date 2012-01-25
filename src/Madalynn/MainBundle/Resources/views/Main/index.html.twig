@@ -1,1 +1,15 @@
 {% extends "MadalynnMainBundle::layout.html.twig" %}
+
+{% block pageheader %}
+    <h1>Actualités <small>Supporting text or tagline</small></h1>
+{% endblock %}
+
+{% block content %}
+    <div class="introduction">
+        <p class="indent">Bienvenue sur le (nouveau ?) site des doctorants de l'IPNL. Vous êtes, allez ou voulez devenir thésard (oups&hellip; doctorant pardon) ici, et vous vous posez des questions. Et bien les réponses sont ici. Ou si elles ne le sont pas, elles le devraient.</p>
+        <p class="indent">Blablabla</p>
+    </div>
+    {% for article in articles %}
+        {% include 'MadalynnMainBundle:Article:article.html.twig' with { 'article': article } %}
+    {% endfor %}
+{% endblock %}

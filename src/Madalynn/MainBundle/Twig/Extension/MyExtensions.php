@@ -51,7 +51,10 @@ class MyExtensions extends \Twig_Extension
         $dateFormater = \IntlDateFormatter::create(
                         \Locale::getDefault(), $values[$dateType], $values[$timeType]
         );
-        
-        return $dateFormater->format($date);
+
+        if ($dateFormater)
+            return $dateFormater->format($date);
+        else
+            return date('d/m/Y');
     }
 }

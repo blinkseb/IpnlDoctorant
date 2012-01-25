@@ -69,3 +69,6 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Madalynn\MainBundle\Entity\User
+    profile:
+        form:
+            type: madalynn_user_profile

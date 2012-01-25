@@ -3,6 +3,11 @@ services:
     class: Madalynn\MainBundle\Security\Provider\EMailProvider
     public: false
     arguments: ["@fos_user.user_manager"]
+  doct_user.profile.form.type:
+    class: Madalynn\MainBundle\Form\Type\ProfileFormType
+    arguments: [%fos_user.model.user.class%]
+    tags:
+      - { name: form.type, alias: madalynn_user_profile }
   twig.extension.twigext:
     class: Madalynn\MainBundle\Twig\Extension\MyExtensions
     tags:

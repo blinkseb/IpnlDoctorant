@@ -13,6 +13,7 @@
         <!--[if lt IE 9]>
           <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
+        <link href='http://fonts.googleapis.com/css?family=Magra' rel='stylesheet' type='text/css'>
 
         <link rel="shortcut icon" href="/favicon.ico" />
         {% block stylesheets %}
@@ -26,10 +27,11 @@
 
         {% block javascripts %}
             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-          {% javascripts filter="?yui_css" output="js/js.js"
-            '@MadalynnMainBundle/Resources/public/js/bootstrap-twipsy.js'
-            '@MadalynnMainBundle/Resources/public/js/bootstrap-popover.js'
-          %}
+            {% javascripts filter="?yui_css" output="js/js.js"
+                '@MadalynnMainBundle/Resources/public/js/bootstrap-twipsy.js'
+                '@MadalynnMainBundle/Resources/public/js/bootstrap-popover.js'
+                '@MadalynnMainBundle/Resources/public/js/bootstrap-dropdown.js'
+            %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
           {% endjavascripts %}
         {% endblock %}
@@ -42,20 +44,20 @@
         <div class="container">
           <a class="brand" href="#">Les doctorants de l'IPNL</a>
           <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <li class="active"><a href="{{ path('homepage') }}">Accueil</a></li>
+            <li><a href="{{ path('user_list') }}">Les doctorants</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
 
-          {% if app.user %}
+          {% if is_granted('ROLE_USER') %}
           <ul class="nav secondary-nav pull-right">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle">Dropdown</a>
+            <li class="dropdown" data-dropdown="dropdown">
+              <a href="#" class="dropdown-toggle">{{ app.user.firstname }}</a>
               <ul class="dropdown-menu">
-                <li><a href="#">Secondary link</a></li>
-                <li><a href="#">Something else here</a></li>
+                <li><a href="{{ path('fos_user_profile_show') }}">Voir mon profil</a></li>
+                <li><a href="{{ path('fos_user_profile_edit') }}">Editer mon profil</a></li>
                 <li class="divider"></li>
-                <li><a href="#">Another link</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
               </ul>
             </li>
           </ul>
@@ -73,13 +75,11 @@
       </div>
       <div class="content">
         <div class="page-header">
-          <h1>Page name <small>Supporting text or tagline</small></h1>
+            {% block pageheader %}{% endblock %}
         </div>
         <div class="row">
           <div class="span14">
-              {% for article in articles %}
-                  {% include 'MadalynnMainBundle:Article:article.html.twig' with { 'article': article } %}
-              {% endfor %}
+              {% block content %}{% endblock %}
           </div>
         </div>
       </div>

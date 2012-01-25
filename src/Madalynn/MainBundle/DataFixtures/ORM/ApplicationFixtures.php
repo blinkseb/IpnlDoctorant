@@ -50,6 +50,27 @@ class ApplicationFixtures implements FixtureInterface, ContainerAwareInterface {
       $manager->persist($article);
     }
 
+    $user = new User();
+
+    $user->setUsername('blinkseb');
+    $user->setEmail('blinkseb@gmail.com');
+    $user->setFirstname('Sébastien');
+    $user->setLastname('Brochet');
+    $user->setGroup('CMS');
+    $user->setLevel('1');
+    $user->setPhone($faker->phoneNumber);
+    $user->setStatus("DOCTORANT");
+    $user->setBirthday(new \DateTime('1987-04-22'));
+    $user->setBeginningyear(new \DateTime('2011-10-01'));
+    $user->setSoutenance(new \DateTime('2014-10-01'));
+    $user->setPlainPassword('btnk62');
+    $user->setThesis('Blabla avec CMS');
+    $user->setOffice(116);
+    $user->setEnabled(true);
+    $user->setSuperAdmin(true);
+
+    $userManager->updateUser($user);
+
     $manager->flush();
   }
 
