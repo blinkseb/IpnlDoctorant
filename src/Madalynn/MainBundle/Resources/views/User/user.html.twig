@@ -1,22 +1,16 @@
-<div class="row">
-  <div class="span7">
-    <div class="well span7" rel="popover" title="Informations" data-content="<strong>Bâtiment</strong> {{ user.building }}, {{ user.getFormatedLevel | raw }}<br />
-         <strong>Bureau</strong> : {{ user.office }}<br />
-         <strong>Téléphone</strong> : {{ user.phone }}">
-      <div class="row">
-        <div class="span4">
-          <strong>{{ user.firstname }} {{ user.lastname }}</strong>
-        </div>
-        <div class="span3 doctorant-groupe">
-          Groupe : <strong>{{ user.group }}</strong>
-        </div>
-      </div>
-      <div class="doctorant-these">
-        {{ user.thesis }}
-      </div>
-      <div>
-        En thèse depuis {{ user.beginningyear | date('m/Y') }}
-      </div>
+<div class="well user" rel="popover" title="Informations" data-offset="-50" data-content="<strong>Bâtiment</strong> {{ user.building }}, {{ user.getFormatedLevel | raw }}<br />
+     <strong>Bureau</strong> : {{ user.office }}<br />
+     <strong>Téléphone</strong> : {{ user.phone }}">
+    <div class="doctorant-groupe">
+        Groupe : <strong>{{ user.group }}</strong>
     </div>
-  </div>
+    <div class="doctorant-name">
+        <strong>{{ user.firstname }} {{ user.lastname }}</strong>
+    </div>
+    <div class="doctorant-these">
+        {{ user.thesis }}
+    </div>
+    <div>
+        En thèse depuis {{ user.beginningyear | date('m/Y') }}
+    </div>
 </div>

@@ -43,4 +43,17 @@
             {% endfor %}
         </div>
     </div>
+
+    <script>
+        $(function () {
+            $("div[rel=popover]")
+            .popover({
+                offset: 10,
+                html: true
+            })
+            .click(function(e) {
+                e.preventDefault()
+            })
+        })
+    </script>
 {% endblock %}

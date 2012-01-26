@@ -61,8 +61,6 @@
               </ul>
             </li>
           </ul>
-          {% else %}
-            {% render "FOSUserBundle:Security:login" %}
           {% endif %}
         </div>
       </div>
@@ -70,8 +68,16 @@
 
     <div class="container">
       <div class="sidebar">
-
-
+          {% if not is_granted('ROLE_USER') %}
+            {% render "FOSUserBundle:Security:login" %}
+          {% endif %}
+          <div class="verticalline">
+            <h4>Liens utiles</h4>
+          </div>
+              <ul>
+                  <li><a href="#">Page du doctorant</a></li>
+                  <li><a href="#">Liste des liens vitaux</a></li>
+              </ul>
       </div>
       <div class="content">
         <div class="page-header">
@@ -82,32 +88,11 @@
             {{ message|trans({}, 'FOSUserBundle') }}
         </div>
         {% endfor %}
-        <div class="row">
-          <div class="span14">
-              {% block content %}{% endblock %}
-          </div>
-        </div>
+        {% block content %}{% endblock %}
       </div>
-
       <footer>
-        <p>&copy; Company 2011</p>
+          &nbsp;
       </footer>
-
-      <script>
-            $(function () {
-              $("div[rel=popover]")
-                .popover({
-                  offset: 10,
-                  html: true
-                })
-                .click(function(e) {
-                  e.preventDefault()
-                })
-            })
-        </script>
-
     </div> <!-- /container -->
-
   </body>
-
 </html>

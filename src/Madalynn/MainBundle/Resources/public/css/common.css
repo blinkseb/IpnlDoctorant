@@ -16,9 +16,6 @@ body {
 .container > footer p {
     text-align: center; /* center align it with the container */
 }
-.container {
-    width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
-}
 
 .box{
     background-color: #f5f5f5;
@@ -37,6 +34,10 @@ body {
 .box blockquote{
     border-color: #ddd;
     border-color: rgba(0, 0, 0, 0.15);
+}
+
+.container {
+    margin-left: 210px;
 }
 
 /* The white background content wrapper */
@@ -73,8 +74,6 @@ body {
 }
 
 .article {
-    width: 740px;
-    margin-right: 20px;
     padding: 5px 19px 5px 19px;
 }
 
@@ -82,10 +81,8 @@ body {
     padding-top: 5px;
     font-weight: bold;
 
-
-    border-color: #ddd;
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: 2px 1px 2px rgba(0,0,0,.15);
+    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .article > .content {
@@ -101,9 +98,49 @@ body {
 
 p.indent {
     text-indent: 15px;
-    margin-right: 40px;
 }
 
 .marginfix {
     margin-right: 40px;
+}
+.sidebar {
+    background-color: #fff;
+    padding: 20px;
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    position: fixed;
+    left: 10px;
+    z-index: 10000;
+    width: 150px;
+}
+
+.user {
+    width: 80%;
+}
+
+.doctorant-groupe {
+    float: right;
+}
+
+.login > input {
+    margin-bottom: 5px;
+}
+
+.login > input[type="submit"] {
+    float: right;
+}
+
+.verticalline {
+    margin: 0;
+    padding-left: 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    border-color: #ddd;
+    border-bottom: 1px solid rgba(0,0,0,.15);
 }

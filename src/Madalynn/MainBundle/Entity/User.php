@@ -125,8 +125,10 @@ class User extends BaseUser
     public function getThesisYear()
     {
         $now = new \DateTime();
-        $now->setDate((int) date('Y'), 10, 1); // 1st october of the current year
-        return $this->beginningyear->diff($now)->y + 1;
+        $now->setDate((int) date('Y'), 9, 30); // 30th september of the current year
+        $diff = $this->beginningyear->diff($now);
+        //echo ($this->beginningyear->format('d/m/Y')) . ' ' . ($diff->y + 1) . " \n";
+        return $diff->y + 1;
     }
 
     public function getFormatedThesisYear()
