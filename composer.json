@@ -10,7 +10,9 @@
         "friendsofsymfony/user-bundle": "master-dev",
         "fzaninotto/faker": "master-dev",
         "doctrine/doctrine-fixtures-bundle": "master-dev",
-        "doctrine/data-fixtures": "master-dev"
+        "doctrine/data-fixtures": "master-dev",
+        "knplabs/knp-menu-bundle": "master-dev",
+        "sensio/generator-bundle": "master-dev"
     },
 
     "autoload": {

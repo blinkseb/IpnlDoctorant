@@ -70,6 +70,7 @@ class ApplicationFixtures implements FixtureInterface, ContainerAwareInterface
         $user->setOffice(116);
         $user->setBuilding("Dirac");
         $user->setEnabled(true);
+        $user->addRole('ROLE_ADMIN');
         $user->setSuperAdmin(true);
 
         $userManager->updateUser($user);

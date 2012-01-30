@@ -18,7 +18,9 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Madalynn\MainBundle\MadalynnMainBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle()
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

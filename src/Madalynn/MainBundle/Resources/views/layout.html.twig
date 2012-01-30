@@ -43,12 +43,9 @@
       <div class="fill">
         <div class="container">
           <a class="brand" href="#">Les doctorants de l'IPNL</a>
-          <ul class="nav">
-            <li class="active"><a href="{{ path('homepage') }}">Accueil</a></li>
-            <li><a href="{{ path('user_list') }}">Les doctorants</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-
+          {% block menu %}
+            {{ knp_menu_render('MadalynnMainBundle:Builder:mainMenu', {currentClass: 'active'}) }}
+          {% endblock %}
           {% if is_granted('ROLE_USER') %}
           <ul class="nav secondary-nav pull-right">
             <li class="dropdown" data-dropdown="dropdown">
@@ -56,6 +53,10 @@
               <ul class="dropdown-menu">
                 <li><a href="{{ path('fos_user_profile_show') }}">Voir mon profil</a></li>
                 <li><a href="{{ path('fos_user_profile_edit') }}">Editer mon profil</a></li>
+                {% if is_granted('ROLE_ADMIN') %}
+                <li class="divider"></li>
+                <li{%- if admin is defined %} class="active"{%- endif -%}><a href="{{ path('admin_homepage') }}">Administration</a></li>
+                {% endif %}
                 <li class="divider"></li>
                 <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
               </ul>
@@ -67,7 +68,7 @@
     </div>
 
     <div class="container">
-      <div class="sidebar">
+      <div class="sidebar {%- if admin is defined and admin %} hidden{%- endif -%}">
           {% if not is_granted('ROLE_USER') %}
             {% render "FOSUserBundle:Security:login" %}
           {% endif %}

@@ -1,0 +1,10 @@
+{% set admin=true %}
+{% extends "MadalynnMainBundle::layout.html.twig" %}
+
+{% block menu %}
+    {{ knp_menu_render('MadalynnMainBundle:Builder:adminMenu', {currentClass: 'active'}) }}
+{% endblock %}
+
+{% block pageheader %}
+    <h1>Administration</h1>
+{% endblock %}

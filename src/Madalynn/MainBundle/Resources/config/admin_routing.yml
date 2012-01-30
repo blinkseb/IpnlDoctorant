@@ -1,0 +1,11 @@
+admin_homepage:
+    pattern: /
+    defaults: { _controller: MadalynnMainBundle:Admin:homepage }
+
+admin_article:
+    resource: '@MadalynnMainBundle/Resources/config/routing/article.yml'
+    prefix: /article
+
+admin_users:
+    pattern: /users
+    defaults: { _controller: MadalynnMainBundle:Admin:users }
