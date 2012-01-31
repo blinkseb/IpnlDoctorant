@@ -1,16 +1,38 @@
-<h1>Article creation</h1>
+{% extends "MadalynnMainBundle:Admin:layout.html.twig" %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="/web/bundles/madalynnmain/js/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/web/bundles/madalynnmain/js/ckeditor/adapters/jquery.js"></script>
+{% endblock %}
+
+{% block pageheader %}
+    <h1>Article creation</h1>
+{% endblock %}
+
+{% block content %}
 <form action="{{ path('admin_article_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+    <div class="actions">
+        <input class="btn primary" type="submit" value="Créer" />&nbsp;<a class="btn" href="{{ path('admin_article') }}">Retour</a>
+    </div>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_article') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+<script>
+    $(function() {
+            var config = {
+                toolbar: [
+                    [ 'Source' ],
+                    [ 'Bold', 'Italic', 'Underline', 'Subscript', 'Superscript', '-', 'RemoveFormat' ],
+                    [ 'Link', 'Unlink' ],
+                    [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'NumberedList', 'BulletedList' ],
+                    [ 'Cut', 'Copy', 'Paste', 'PasteText', '-', 'Undo', 'Redo' ],
+                    [ 'Find','Replace','-','SelectAll','-','SpellChecker', 'Scayt' ],
+                    [ 'Format' ]
+                ],
+            };
+
+            $('textarea.editor').ckeditor(config);
+        });
+</script>
+{% endblock %}

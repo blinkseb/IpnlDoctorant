@@ -1,5 +1,19 @@
-<h1>Article</h1>
+{% extends "MadalynnMainBundle:Admin:layout.html.twig" %}
 
+{% block pageheader %}
+    <div class="right">
+        <form action="{{ path('admin_article_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+             <a class="btn" href="{{ path('admin_article') }}">Retour</a>
+             &nbsp;
+             <a class="btn primary" href="{{ path('admin_article_edit', { 'id': entity.id }) }}">Modifier</a>
+             <input class="btn danger" type="submit" value="Supprimer" />
+        </form>
+    </div>
+    <h1>Article</h1>
+{% endblock %}
+
+{% block content %}
 <table class="record_properties">
     <tbody>
         <tr>
@@ -19,10 +33,6 @@
             <td>{{ entity.content }}</td>
         </tr>
         <tr>
-            <th>Slug</th>
-            <td>{{ entity.slug }}</td>
-        </tr>
-        <tr>
             <th>Created</th>
             <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
         </tr>
@@ -32,22 +42,4 @@
         </tr>
     </tbody>
 </table>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_article') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('admin_article_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('admin_article_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+{% endblock %}

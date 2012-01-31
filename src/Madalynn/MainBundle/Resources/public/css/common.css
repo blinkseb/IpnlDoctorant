@@ -148,3 +148,7 @@ p.indent {
 .hidden {
     visibility: hidden;
 }
+
+.right {
+    float: right;
+}

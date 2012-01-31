@@ -58,7 +58,7 @@ class ArticleController extends Controller
     public function newAction()
     {
         $entity = new Article();
-        $form   = $this->createForm(new ArticleType(), $entity);
+        $form   = $this->createForm(new ArticleType(false), $entity);
 
         return $this->render('MadalynnMainBundle:Article:new.html.twig', array(
             'entity' => $entity,
@@ -74,8 +74,10 @@ class ArticleController extends Controller
     {
         $entity  = new Article();
         $request = $this->getRequest();
-        $form    = $this->createForm(new ArticleType(), $entity);
+        $form    = $this->createForm(new ArticleType(false), $entity);
         $form->bindRequest($request);
+
+        $entity->setAuthor($this->getUser());
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getEntityManager();
