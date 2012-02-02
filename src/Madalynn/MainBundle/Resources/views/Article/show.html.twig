@@ -6,15 +6,15 @@
             {{ form_widget(delete_form) }}
              <a class="btn" href="{{ path('admin_article') }}">Retour</a>
              &nbsp;
-             <a class="btn primary" href="{{ path('admin_article_edit', { 'id': entity.id }) }}">Modifier</a>
-             <input class="btn danger" type="submit" value="Supprimer" />
+             <a class="btn btn-primary" href="{{ path('admin_article_edit', { 'id': entity.id }) }}">Modifier</a>
+             <input class="btn btn-danger" type="submit" value="Supprimer" />
         </form>
     </div>
     <h1>Article</h1>
 {% endblock %}
 
 {% block content %}
-<table class="record_properties">
+<table class="record_properties table table-bordered table-striped">
     <tbody>
         <tr>
             <th>Id</th>

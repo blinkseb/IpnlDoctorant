@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit form-horizontal">
         {{ form_widget(form) }}
         <div class="actions marginfix">
             <input type="submit" class="btn primary" value="{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}" />

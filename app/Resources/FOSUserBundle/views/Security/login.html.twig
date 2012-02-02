@@ -16,9 +16,9 @@
 {% endif %}
 <form action="{{ path("fos_user_security_check") }}" method="post" class="pull-right login">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-    <input class="span3" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="E-mail" />
-    <input class="span3" type="password" id="password" name="_password" placeholder="Mot de passe" />
-    <input class="btn small primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+    <input class="span2" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="E-mail" />
+    <input class="span2" type="password" id="password" name="_password" placeholder="Mot de passe" />
+    <input class="btn btn-primary btn-small" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
 </form>
 
 {%- if error %}

@@ -17,8 +17,8 @@
 
         <link rel="shortcut icon" href="/favicon.ico" />
         {% block stylesheets %}
-          <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
           {% stylesheets filter="?yui_css" output="css/frontend.css"
+            '@MadalynnMainBundle/Resources/public/css/bootstrap.min.css'
             '@MadalynnMainBundle/Resources/public/css/common.css'
           %}
             <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
@@ -26,11 +26,9 @@
         {% endblock %}
 
         {% block javascripts %}
-            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+            <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
             {% javascripts filter="?yui_css" output="js/js.js"
-                '@MadalynnMainBundle/Resources/public/js/bootstrap-twipsy.js'
-                '@MadalynnMainBundle/Resources/public/js/bootstrap-popover.js'
-                '@MadalynnMainBundle/Resources/public/js/bootstrap-dropdown.js'
+                '@MadalynnMainBundle/Resources/public/js/bootstrap.min.js'
             %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
           {% endjavascripts %}
@@ -39,17 +37,17 @@
 
    <body>
 
-    <div class="topbar">
-      <div class="fill">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="#">Les doctorants de l'IPNL</a>
           {% block menu %}
             {{ knp_menu_render('MadalynnMainBundle:Builder:mainMenu', {currentClass: 'active'}) }}
           {% endblock %}
           {% if is_granted('ROLE_USER') %}
-          <ul class="nav secondary-nav pull-right">
-            <li class="dropdown" data-dropdown="dropdown">
-              <a href="#" class="dropdown-toggle">{{ app.user.firstname }}</a>
+          <ul class="nav pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ app.user.firstname }} <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="{{ path('fos_user_profile_show') }}">Voir mon profil</a></li>
                 <li><a href="{{ path('fos_user_profile_edit') }}">Editer mon profil</a></li>

@@ -9,10 +9,10 @@
     {% if required %}
         {% set attr = attr|merge({'class': attr.class|default('') ~ ' required'}) %}
     {% endif %}
-    <label{% for attrname,attrvalue in attr %} {{attrname}}="{{attrvalue}}"{% endfor %}>
+    <label class="control-label" {%- for attrname,attrvalue in attr %} {{attrname}}="{{attrvalue}}"{% endfor %}>
     {{ label|trans }}
     {% if required %}*{% endif %}
-    {% if help_label %}
+    {% if help_label is defined %}
         <span class="help-block">{{ help_label|trans }}</span>
     {% endif %}
     </label>
@@ -21,33 +21,33 @@
 
 {% block field_label_attr_aware_label %}
 {% spaceless %}
-    {% if label_render %}
-    {% set attr = label_attr|merge({'for': id}) %}
+    {# {% if label_render %} #}
+    {% set attr = label_attr|default({})|merge({'for': id}) %}
     {{ block('field_label') }}
-    {% endif %}
+    {# {% endif %} #}
 {% endspaceless %}
 {% endblock field_label_attr_aware_label %}
 
 {% block field_row %}
     {% if not ('form' in form.get('types')) %}
-    <div class="clearfix {% if errors|length > 0 %}error{% endif %}">
+    <div class="control-group {% if errors|length > 0 %}error{% endif %}">
     {% endif %}
         {% if 'form' in form.get('types') and form.hasParent() != 0 %}
-            {% if show_child_legend %}
+            {# {% if show_child_legend %}
                 {{ block('form_legend') }}
-            {% endif %}
+            {% endif %} #}
     	{% else %}
         	{{ block('field_label_attr_aware_label') }}
         {% endif %}
     {% if not ('form' in form.get('types')) %}
-        <div class="input">
+        <div class="controls">
     {% endif %}
             {% if errors|length > 0 %}
                 {% set attr = attr|merge({'class': attr.class|default('') ~ ' error'}) %}
             {% endif %}
-            {{ widget_prefix }}
+            {# {{ widget_prefix }} #}
             {{ form_widget(form) }}
-            {{ widget_suffix }}
+            {# {{ widget_suffix }} #}
     {% if not ('form' in form.get('types')) %}
             {{ block('field_message') }}
         </div>

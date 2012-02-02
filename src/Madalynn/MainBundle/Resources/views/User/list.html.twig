@@ -14,33 +14,34 @@
 {% endblock %}
 
 {% block content %}
-    <ul class="tabs" data-tabs="tabs">
-        <li class="active"><a href="#premiereannee">1<sup>ère</sup> année</a></li>
-        <li><a href="#deuxiemeannee">2<sup>ème</sup> année</a></li>
-        <li><a href="#troisiemeannee">3<sup>ème</sup> année</a></li>
-        <li><a href="#anciendoctorants">Anciens doctorants</a></li>
-    </ul>
-
-    <div class="pill-content">
-        <div class="active" id="premiereannee">
-            {% for user in users | user_sort(1) %}
-                {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
-            {% endfor %}
-        </div>
-        <div id="deuxiemeannee">
-            {% for user in users | user_sort(2) %}
-                {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
-            {% endfor %}
-        </div>
-        <div id="troisiemeannee">
-            {% for user in users | user_sort(3) %}
-                {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
-            {% endfor %}
-        </div>
-        <div id="anciendoctorants">
-            {% for user in users | user_sort(4) %}
-                {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
-            {% endfor %}
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#premiereannee">1<sup>ère</sup> année</a></li>
+            <li><a data-toggle="tab" href="#deuxiemeannee">2<sup>ème</sup> année</a></li>
+            <li><a data-toggle="tab" href="#troisiemeannee">3<sup>ème</sup> année</a></li>
+            <li><a data-toggle="tab" href="#anciendoctorants">Anciens doctorants</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="premiereannee">
+                {% for user in users | user_sort(1) %}
+                    {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="deuxiemeannee">
+                {% for user in users | user_sort(2) %}
+                    {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="troisiemeannee">
+                {% for user in users | user_sort(3) %}
+                    {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
+                {% endfor %}
+            </div>
+            <div class="tab-pane" id="anciendoctorants">
+                {% for user in users | user_sort(4) %}
+                    {% include 'MadalynnMainBundle:User:user.html.twig' with { 'user': user } %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 

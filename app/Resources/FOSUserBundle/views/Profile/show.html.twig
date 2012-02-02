@@ -4,71 +4,71 @@
 {% endblock %}
 
 {% block content %}
-    <form>
+    <form class="form-horizontal">
         <fieldset>
-            <div class="clearfix">
-                <label>E-Mail</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">E-Mail</label>
+                <div class="controls">
                     <span class="uneditable-input">{{ user.email }}</span>
                 </div>
             </div>
-            <div class="clearfix">
-                <label>Nom</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">Nom</label>
+                <div class="controls">
                     <span class="uneditable-input">{{ user.lastname }}</span>
                 </div>
             </div>
-            <div class="clearfix">
-                <label>Prénom</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">Prénom</label>
+                <div class="controls">
                     <span class="uneditable-input">{{ user.firstname }}</span>
                 </div>
             </div>
-            <div class="clearfix">
-                <label>Date de naissance</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">Date de naissance</label>
+                <div class="controls">
                     <span class="uneditable-input">{{ user.birthday | localeDate }}</span>
                 </div>
             </div>
-            <div class="clearfix">
-                <label>Thèse</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">Thèse</label>
+                <div class="controls">
                     <span class="uneditable-input">{{ user.thesis }}</span>
                 </div>
             </div>
-            <div class="clearfix">
-                <label>Année</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">Année</label>
+                <div class="controls">
                     <span class="uneditable-input">{{ user.getFormatedThesisYear | raw }}</span>
                 </div>
             </div>
-            <div class="clearfix">
-                <label>Groupe</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">Groupe</label>
+                <div class="controls">
                     <span class="uneditable-input">{{ user.group }}</span>
                 </div>
             </div>
-            <div class="clearfix">
-                <label>Bâtiment</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">Bâtiment</label>
+                <div class="controls">
                     <span class="uneditable-input">{{ user.building }}</span>
                 </div>
             </div>
-            <div class="clearfix">
-                <label>Bureau</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">Bureau</label>
+                <div class="controls">
                     <span class="uneditable-input">{{ user.getFormatedLevel | raw }}, bureau {{ user.office }}</span>
                 </div>
             </div>
-            <div class="clearfix">
-                <label>Téléphone</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">Téléphone</label>
+                <div class="controls">
                     <span class="uneditable-input">{{ user.phone }}</span>
                 </div>
             </div>
-            <div class="clearfix">
-                <label>Ancien doctorant</label>
-                <div class="input">
+            <div class="control-group">
+                <label class="control-label">Ancien doctorant</label>
+                <div class="controls">
                     <span class="uneditable-input">{%- if user.status == "EX-DOCTORANT" %}Oui{% else %}Non{% endif %}</span>
                 </div>
 

@@ -7,14 +7,14 @@
 {% endblock %}
 
 {% block pageheader %}
-    <h1>Article creation</h1>
+    <h1>Nouvel article</h1>
 {% endblock %}
 
 {% block content %}
-<form action="{{ path('admin_article_create') }}" method="post" {{ form_enctype(form) }}>
+<form action="{{ path('admin_article_create') }}" method="post" {{ form_enctype(form) }} class="form-horizontal">
     {{ form_widget(form) }}
-    <div class="actions">
-        <input class="btn primary" type="submit" value="Créer" />&nbsp;<a class="btn" href="{{ path('admin_article') }}">Retour</a>
+    <div class="form-actions">
+        <input class="btn btn-primary" type="submit" value="Créer" />&nbsp;<a class="btn back" href="{{ path('admin_article') }}">Retour</a>
     </div>
 </form>
 

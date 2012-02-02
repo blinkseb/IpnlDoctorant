@@ -21,7 +21,7 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('MadalynnMainBundle:Article')->findAll();
+        $entities = $em->createQuery('SELECT p FROM MadalynnMainBundle:Article p ORDER BY p.id DESC')->getResult();
 
         return $this->render('MadalynnMainBundle:Article:index.html.twig', array(
             'entities' => $entities

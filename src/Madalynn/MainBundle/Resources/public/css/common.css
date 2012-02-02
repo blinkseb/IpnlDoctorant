@@ -152,3 +152,15 @@ p.indent {
 .right {
     float: right;
 }
+
+.right input[type="submit"] {
+    vertical-align: top;
+}
+
+.form-actions > a.back {
+    vertical-align: middle;
+}
+
+tr.visible {
+    background-color: #F9F9F9;
+}
